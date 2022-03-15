@@ -11,20 +11,20 @@ public class TP2_TwoOpt {
             //random
             var randomCities = TP1.generateRandomCities(dim);
             //best two-opt
-            var randomCitiesBestTwoOpt = bestNeighboursTwoOpt(randomCities, matrix);
+            var randomCitiesBestTwoOpt = bestNeighboursTwoOpt(randomCities.clone(), matrix);
             var costRandomBestTwoOpt = TP1.totalCostFromWay(randomCitiesBestTwoOpt, matrix);
             //first two-opt
-            var randomCitiesFirstTwoOpt = firstNeighboursTwoOpt(randomCities, matrix);
+            var randomCitiesFirstTwoOpt = firstNeighboursTwoOpt(randomCities.clone(), matrix);
             var costRandomFirstTwoOpt = TP1.totalCostFromWay(randomCitiesFirstTwoOpt, matrix);
             System.out.println("Instance: " + instance + "; Cost for Random Cities and TwoOpt: Best: " + costRandomBestTwoOpt
                     + "; First: " + costRandomFirstTwoOpt);
             //heuristic
-            var heuristicCities = TP1.heuristicWay(randomCities, matrix);
+            var heuristicCities = TP1.heuristicWay(randomCities.clone(), matrix);
             //best two-opt
-            var heuristicCitiesBestTwoOpt = bestNeighboursTwoOpt(heuristicCities, matrix);
+            var heuristicCitiesBestTwoOpt = bestNeighboursTwoOpt(heuristicCities.clone(), matrix);
             var costHeuristicBestTwoOpt = TP1.totalCostFromWay(heuristicCitiesBestTwoOpt, matrix);
             //first two-opt
-            var heuristicCitiesFirstTwoOpt = firstNeighboursTwoOpt(heuristicCities, matrix);
+            var heuristicCitiesFirstTwoOpt = firstNeighboursTwoOpt(heuristicCities.clone(), matrix);
             var costHeuristicFirstTwoOpt = TP1.totalCostFromWay(heuristicCitiesFirstTwoOpt, matrix);
             System.out.println("Instance: " + instance + "; Cost for Heuristic Cities and TwoOpt: Best: " + costHeuristicBestTwoOpt
                     + "; First: " + costHeuristicFirstTwoOpt);
@@ -62,8 +62,6 @@ public class TP2_TwoOpt {
                     best = gain;
                 }
             }
-            if (changes != 0)
-                break;
         }
         if (changes == 0) {
             return cities;

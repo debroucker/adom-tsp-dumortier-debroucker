@@ -11,20 +11,20 @@ public class TP2_Swap {
             //random
             var randomCities = TP1.generateRandomCities(dim);
             //best swap
-            var randomCitiesBestSwap = bestNeighboursSwap(randomCities, matrix);
+            var randomCitiesBestSwap = bestNeighboursSwap(randomCities.clone(), matrix);
             var costRandomBestSwap = TP1.totalCostFromWay(randomCitiesBestSwap, matrix);
             //first swap
-            var randomCitiesFirstSwap = firstNeighboursSwap(randomCities, matrix);
+            var randomCitiesFirstSwap = firstNeighboursSwap(randomCities.clone(), matrix);
             var costRandomFirstSwap = TP1.totalCostFromWay(randomCitiesFirstSwap, matrix);
             System.out.println("Instance: " + instance + "; Cost for Random Cities and Swap: Best: " + costRandomBestSwap
                     + "; First: " + costRandomFirstSwap);
             //heuristic
-            var heuristicCities = TP1.heuristicWay(randomCities, matrix);
+            var heuristicCities = TP1.heuristicWay(randomCities.clone(), matrix);
             //best swap
-            var heuristicCitiesBestSwap = bestNeighboursSwap(heuristicCities, matrix);
+            var heuristicCitiesBestSwap = bestNeighboursSwap(heuristicCities.clone(), matrix);
             var costHeuristicBestSwap = TP1.totalCostFromWay(heuristicCitiesBestSwap, matrix);
             //first swap
-            var heuristicCitiesFirstSwap = firstNeighboursSwap(heuristicCities, matrix);
+            var heuristicCitiesFirstSwap = firstNeighboursSwap(heuristicCities.clone(), matrix);
             var costHeuristicFirstSwap = TP1.totalCostFromWay(heuristicCitiesFirstSwap, matrix);
             System.out.println("Instance: " + instance + "; Cost for Heuristic Cities and Swap: Best: " + costHeuristicBestSwap
                     + "; First: " + costHeuristicFirstSwap);
@@ -38,26 +38,29 @@ public class TP2_Swap {
     }
 
     public static int gainSwap(int i, int j, Integer[] way, int[][] matrix) {
-        var ix = i - 1;
-        var jp = j + 1;
-        if (i == 0)
-            ix = way.length - 1;
-        if (j == way.length - 1)
-            jp = 0;
+        var previousI = i - 1;
+        var nextJ = j + 1;
+        if (i == 0) {
+            previousI = way.length - 1;
+        }
+        if (j == way.length - 1) {
+            nextJ = 0;
+        }
         var cost1 = 0;
         var cost2 = 0;
+        //on calcule seulement les nouveaux chemins. ex : A,B,C,D,E, on swap A et E, donc E,B,C,D,A, on calcule D-A et E-B
         if (j == i + 1) {
-            cost1 = matrix[way[ix] - 1][way[i] - 1] + matrix[way[j] - 1][way[jp] - 1];
-            cost2 = matrix[way[ix] - 1][way[j] - 1] + matrix[way[i] - 1][way[jp] - 1];
+            cost1 = matrix[way[previousI] - 1][way[i] - 1] + matrix[way[j] - 1][way[nextJ] - 1];
+            cost2 = matrix[way[previousI] - 1][way[j] - 1] + matrix[way[i] - 1][way[nextJ] - 1];
         }
         else if (i == 0 && j == way.length - 1) {
             cost1 = matrix[way[i] - 1][way[i + 1] - 1] + matrix[way[j - 1] - 1][way[j] - 1];
             cost2 = matrix[way[j] - 1][way[i + 1] - 1] + matrix[way[j - 1] - 1][way[i] - 1];
         } else {
-            cost1 = matrix[way[ix] - 1][way[i] - 1] + matrix[way[i] - 1][way[i+1] - 1]
-                    + matrix[way[j-1] - 1][way[j] - 1] + matrix[way[j] - 1][way[jp] - 1];
-            cost2 = matrix[way[ix] - 1][way[j] - 1] + matrix[way[j] - 1][way[i+1] - 1]
-                    + matrix[way[j-1] - 1][way[i] - 1] + matrix[way[i] - 1][way[jp] - 1];
+            cost1 = matrix[way[previousI] - 1][way[i] - 1] + matrix[way[i] - 1][way[i+1] - 1]
+                    + matrix[way[j-1] - 1][way[j] - 1] + matrix[way[j] - 1][way[nextJ] - 1];
+            cost2 = matrix[way[previousI] - 1][way[j] - 1] + matrix[way[j] - 1][way[i+1] - 1]
+                    + matrix[way[j-1] - 1][way[i] - 1] + matrix[way[i] - 1][way[nextJ] - 1];
         }
         return cost1 - cost2;
     }
@@ -78,8 +81,6 @@ public class TP2_Swap {
                     swap(i, j, cities); //on reswap pour revenir dans l'état précédent (1er swap pour le .clone)
                 }
             }
-            if (changes != 0)
-                break;
         }
         if (changes == 0) {
             return optWay;

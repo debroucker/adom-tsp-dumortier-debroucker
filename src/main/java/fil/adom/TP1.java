@@ -12,7 +12,7 @@ public class TP1 {
 
     public static final String[] allInstances = {"A", "B", "C", "D", "E", "F"};
 
-    public static final String mainDir = "C:\\Users\\monpc\\Desktop\\adom-tsp-dumortier-debroucker\\files\\InstancesRandomTSP\\";
+    public static final String mainDir = "C:\\Users\\monpc\\Desktop\\adom-tsp-dumortier-debroucker\\files\\random\\";
 
     public static void main(String[] args) {
         var allMatrices = createAllMatrices();
