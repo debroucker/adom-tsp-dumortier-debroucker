@@ -12,7 +12,7 @@ public class TP1 {
 
     public static final String[] allInstances = {"A", "B", "C", "D", "E", "F"};
 
-    public static final String mainDir = "C:\\Users\\monpc\\Desktop\\adom-tsp-dumortier-debroucker\\files\\random\\";
+    public static final String mainDir = "./files/random/";
 
     public static void main(String[] args) {
         var allMatrices = createAllMatrices();
@@ -77,14 +77,14 @@ public class TP1 {
         var heuristicWay = new ArrayList<Integer>();
         var beginCity = neighboursList.get(0);
         heuristicWay.add(beginCity);
-        var t = neighboursList.size();
-        while (t > 1) {
+        var tail = neighboursList.size();
+        while (tail > 1) {
             //On passe en liste des voisins, tous les voisins restants en enlevant ceux par lesquels on est déjà passé
             var bestNeighbour = bestNeighbour(beginCity, neighboursList.toArray(new Integer[0]), matrix);
             beginCity = bestNeighbour;
             heuristicWay.add(bestNeighbour);
             neighboursList = neighboursList.stream().filter(n -> n != bestNeighbour).toList();
-            t--;
+            tail--;
         }
         return heuristicWay.toArray(new Integer[0]);
     }

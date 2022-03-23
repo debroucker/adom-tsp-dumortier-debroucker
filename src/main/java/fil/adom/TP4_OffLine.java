@@ -9,12 +9,12 @@ import java.util.List;
 
 public class TP4_OffLine {
 
-    public static final String mainDir = "C:\\Users\\monpc\\Desktop\\adom-tsp-dumortier-debroucker\\files\\generated\\OffLine\\";
+    public static final String mainDir = "./files/generated/OffLine/";
 
     public static void main(String[] args) {
         var allMatrices = TP1.createAllMatrices();
         var dim = 100;
-        var nb = 500;
+        var nb = 1000;
         for (var i = 0; i < 6; i+=2) {
             var allDatas = createAllData(dim, nb, allMatrices.get(i), allMatrices.get(i+1));
             var filtered = filteredOffLine(allDatas);
@@ -49,7 +49,7 @@ public class TP4_OffLine {
             }
             i++;
         }
-        return datas.stream().filter(data -> data.dominate).toList();
+        return datas.stream().filter(data -> !data.dominate).toList();
     }
 
     public static boolean isDominate(TPA_Data data1, TPA_Data data2) {
