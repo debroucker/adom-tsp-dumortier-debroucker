@@ -22,38 +22,36 @@ public class TP4_OffLine {
         }
     }
 
+    public static TPA_Data createOneData(int dim, int[][] matrix1, int[][] matrix2) {
+        var way = TP1.generateRandomCities(dim);
+        var allCost = TP4.evaluateTwoObjectives(way, matrix1, matrix2);
+        return new TPA_Data(way, matrix1, allCost[0], matrix2, allCost[1], false);
+    }
+
     public static List<TPA_Data> createAllData(int dim, int nb, int[][] matrix1, int[][] matrix2) {
         var all = new ArrayList<TPA_Data>();
         for (var i = 0; i < nb; i++) {
-            var way = TP1.generateRandomCities(dim);
-            var allCost = TP4.evaluateTwoObjectives(way, matrix1, matrix2);
-            all.add(new TPA_Data(way, matrix1, allCost[0], matrix2, allCost[1], false));
+            all.add(createOneData(dim, matrix1, matrix2));
         }
         return all;
     }
 
     public static List<TPA_Data> filteredOffLine(List<TPA_Data> datas) {
-        var i = 0;
         var len = datas.size();
-        while (i < len) {
+        for (var i = 0; i < len; i++) {
             int j = i;
             var dataI = datas.get(i);
             while (j < len && !dataI.dominate) {
                 var dataJ = datas.get(j);
-                if (isDominate(dataJ, dataI)) {
-                    dataI.dominate = true;
-                } else if (isDominate(dataI, dataJ)) {
+                if (dataJ.isDominateBy(dataI)) {
                     dataJ.dominate = true;
+                } else if (dataI.isDominateBy(dataJ)) {
+                    dataI.dominate = true;
                 }
                 j++;
             }
-            i++;
         }
         return datas.stream().filter(data -> !data.dominate).toList();
-    }
-
-    public static boolean isDominate(TPA_Data data1, TPA_Data data2) {
-        return data1.cost1 < data2.cost1 && data1.cost2 < data2.cost2;
     }
 
     public static void writeInfo(List<TPA_Data> datas, String instance) {
