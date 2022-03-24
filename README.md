@@ -35,14 +35,14 @@ pour une liste initialiser de manière heuristic. Enfin, en prenant le premier v
 on obtient des couts plus élevés qu'avec le meilleur voisin améliorant, mais de meilleurs résultats 
 en temps de calcul.
 
-![TP2 - Instance A](/img/A)
+![TP2 - Instance A](/img/A.png)
 
-![TP2 - Instance B](/img/B)
+![TP2 - Instance B](/img/B.png)
 
-![TP2 - Instance C](/img/C)
+![TP2 - Instance C](/img/C.png)
 
-![TP2 - Instance D](/img/D)
+![TP2 - Instance D](/img/D.png)
 
-![TP2 - Instance E](/img/E)
+![TP2 - Instance E](/img/E.png)
 
-![TP2 - Instance F](/img/F)
+![TP2 - Instance F](/img/F.png)
