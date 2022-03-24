@@ -1,9 +1,9 @@
-Heuristic - First - Swap    -> cost: 17108,732 | time: ,193
-Heuristic - First - Two-Opt -> cost: 15905,766 | time: ,220
-Heuristic - Best  - Swap    -> cost: 16075,769 | time: ,263
-Heuristic - Best  - Two-Opt -> cost: 15594,389 | time: ,312
-Random    - First - Swap    -> cost: 20442,300 | time: ,580
-Random    - First - Two-Opt -> cost: 20186,253 | time: ,571
-Random    - Best  - Swap    -> cost: 23061,090 | time: 1,054
-Random    - Best  - Two-Opt -> cost: 22448,038 | time: 1,290
+Instance E - Heuristic - First - Swap    -> cost: 17035,450 | time: ,340
+Instance E - Heuristic - First - Two-Opt -> cost: 15807,210 | time: ,305
+Instance E - Heuristic - Best  - Swap    -> cost: 15990,563 | time: ,320
+Instance E - Heuristic - Best  - Two-Opt -> cost: 15466,667 | time: ,355
+Instance E - Random    - First - Swap    -> cost: 20357,354 | time: ,614
+Instance E - Random    - First - Two-Opt -> cost: 20068,502 | time: ,603
+Instance E - Random    - Best  - Swap    -> cost: 22945,847 | time: 1,214
+Instance E - Random    - Best  - Two-Opt -> cost: 22378,149 | time: 1,522
 

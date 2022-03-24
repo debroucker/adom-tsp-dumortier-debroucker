@@ -15,7 +15,7 @@ public class TP2_Evaluate {
         var numberFormat = new DecimalFormat("#.000");
         var allMatrices = TP1.createAllMatrices();
         var dim = 100;
-        var nb = 1000;
+        var nb = 100;
         for (var i = 0; i < allMatrices.size(); i++) {
             var res = "";
             var matrix = allMatrices.get(i);
@@ -33,7 +33,7 @@ public class TP2_Evaluate {
             }
             var avgCost = allCosts.stream().mapToDouble(a -> a).average().getAsDouble();
             var avgTime = allTimes.stream().mapToDouble(a -> a).average().getAsDouble();
-            res += "Heuristic - First - Swap    -> cost: " + numberFormat.format(avgCost) + " | time: " + numberFormat.format(avgTime) + "\n";
+            res += "Instance " + instance + " - Heuristic - First - Swap    -> cost: " + numberFormat.format(avgCost) + " | time: " + numberFormat.format(avgTime) + "\n";
             //heuristic first two-opt
             for (var j = 0; j < nb; j++) {
                 var currentMs = System.currentTimeMillis();
@@ -45,7 +45,7 @@ public class TP2_Evaluate {
             }
             avgCost = allCosts.stream().mapToDouble(a -> a).average().getAsDouble();
             avgTime = allTimes.stream().mapToDouble(a -> a).average().getAsDouble();
-            res += "Heuristic - First - Two-Opt -> cost: " + numberFormat.format(avgCost) + " | time: " + numberFormat.format(avgTime) + "\n";
+            res += "Instance " + instance + " - Heuristic - First - Two-Opt -> cost: " + numberFormat.format(avgCost) + " | time: " + numberFormat.format(avgTime) + "\n";
             //heuristic best swap
             for (var j = 0; j < nb; j++) {
                 var currentMs = System.currentTimeMillis();
@@ -57,7 +57,7 @@ public class TP2_Evaluate {
             }
             avgCost = allCosts.stream().mapToDouble(a -> a).average().getAsDouble();
             avgTime = allTimes.stream().mapToDouble(a -> a).average().getAsDouble();
-            res += "Heuristic - Best  - Swap    -> cost: " + numberFormat.format(avgCost) + " | time: " + numberFormat.format(avgTime) + "\n";
+            res += "Instance " + instance + " - Heuristic - Best  - Swap    -> cost: " + numberFormat.format(avgCost) + " | time: " + numberFormat.format(avgTime) + "\n";
             //heuristic best two-opt
             for (var j = 0; j < nb; j++) {
                 var currentMs = System.currentTimeMillis();
@@ -69,7 +69,7 @@ public class TP2_Evaluate {
             }
             avgCost = allCosts.stream().mapToDouble(a -> a).average().getAsDouble();
             avgTime = allTimes.stream().mapToDouble(a -> a).average().getAsDouble();
-            res += "Heuristic - Best  - Two-Opt -> cost: " + numberFormat.format(avgCost) + " | time: " + numberFormat.format(avgTime) + "\n";
+            res += "Instance " + instance + " - Heuristic - Best  - Two-Opt -> cost: " + numberFormat.format(avgCost) + " | time: " + numberFormat.format(avgTime) + "\n";
 
             //random first swap
             for (var j = 0; j < nb; j++) {
@@ -81,7 +81,7 @@ public class TP2_Evaluate {
             }
             avgCost = allCosts.stream().mapToDouble(a -> a).average().getAsDouble();
             avgTime = allTimes.stream().mapToDouble(a -> a).average().getAsDouble();
-            res += "Random    - First - Swap    -> cost: " + numberFormat.format(avgCost) + " | time: " + numberFormat.format(avgTime) + "\n";
+            res += "Instance " + instance + " - Random    - First - Swap    -> cost: " + numberFormat.format(avgCost) + " | time: " + numberFormat.format(avgTime) + "\n";
             //random first two-opt
             for (var j = 0; j < nb; j++) {
                 var currentMs = System.currentTimeMillis();
@@ -92,7 +92,7 @@ public class TP2_Evaluate {
             }
             avgCost = allCosts.stream().mapToDouble(a -> a).average().getAsDouble();
             avgTime = allTimes.stream().mapToDouble(a -> a).average().getAsDouble();
-            res += "Random    - First - Two-Opt -> cost: " + numberFormat.format(avgCost) + " | time: " + numberFormat.format(avgTime) + "\n";
+            res += "Instance " + instance + " - Random    - First - Two-Opt -> cost: " + numberFormat.format(avgCost) + " | time: " + numberFormat.format(avgTime) + "\n";
             //random best swap
             for (var j = 0; j < nb; j++) {
                 var currentMs = System.currentTimeMillis();
@@ -103,7 +103,7 @@ public class TP2_Evaluate {
             }
             avgCost = allCosts.stream().mapToDouble(a -> a).average().getAsDouble();
             avgTime = allTimes.stream().mapToDouble(a -> a).average().getAsDouble();
-            res += "Random    - Best  - Swap    -> cost: " + numberFormat.format(avgCost) + " | time: " + numberFormat.format(avgTime) + "\n";
+            res += "Instance " + instance + " - Random    - Best  - Swap    -> cost: " + numberFormat.format(avgCost) + " | time: " + numberFormat.format(avgTime) + "\n";
             //random best two-opt
             for (var j = 0; j < nb; j++) {
                 var currentMs = System.currentTimeMillis();
@@ -114,7 +114,7 @@ public class TP2_Evaluate {
             }
             avgCost = allCosts.stream().mapToDouble(a -> a).average().getAsDouble();
             avgTime = allTimes.stream().mapToDouble(a -> a).average().getAsDouble();
-            res += "Random    - Best  - Two-Opt -> cost: " + numberFormat.format(avgCost) + " | time: " + numberFormat.format(avgTime) + "\n";
+            res += "Instance " + instance + " - Random    - Best  - Two-Opt -> cost: " + numberFormat.format(avgCost) + " | time: " + numberFormat.format(avgTime) + "\n";
             writeInfo(res, instance);
         }
     }

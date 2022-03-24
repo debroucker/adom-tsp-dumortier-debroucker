@@ -18,4 +18,31 @@ Le souci étant le cout bien trop grand. On est parti donc sur une première sol
 prend le plus petit cout, et ainsi de suite. Ici, on arrive à de bien meilleurs résultats, qui 
 tournent autour de 20.000.
 
-![](/img/cost_random_heuristic.png)
+
+![TP1](/img/cost_random_heuristic.png)
+
+Suite à cela, nous avons vu l'approche des voisins améliorants, notamment le swap et le two-opt.
+Mais également deux méthodes de mouvement, meilleur voisin améliorant, ou premier voisin améliorant.
+On a donc développé ces algos avec toutes les variantes et comparé.
+On a des résultats pour premier voisin en swap et two-opt, mais aussi pour le meilleur voisin en 
+swap et two-opt, pour deux manières initialiser une liste de ville : soit random, soit heuristic.
+
+On a comparé tous ces algos entre eux en cout mais également en temps de calcul, sur une 
+moyenne de 100 executions par instance.
+
+On a conclu que le two-opt était plus local que le swap, et on obtient de meilleurs couts 
+pour une liste initialiser de manière heuristic. Enfin, en prenant le premier voisin améliorant, 
+on obtient des couts plus élevés qu'avec le meilleur voisin améliorant, mais de meilleurs résultats 
+en temps de calcul.
+
+![TP2 - Instance A](/img/A)
+
+![TP2 - Instance B](/img/B)
+
+![TP2 - Instance C](/img/C)
+
+![TP2 - Instance D](/img/D)
+
+![TP2 - Instance E](/img/E)
+
+![TP2 - Instance F](/img/F)
