@@ -10,7 +10,7 @@ par chaque ville une et une seule fois.
 ## Analyse
 
 Au départ, on est parti sur une solution random, c'est-à-dire, on prend la liste des villes, 
-on la mélange, et on regarde le coup pour chaque parcours.
+on la mélange, et on regarde le cout pour chaque parcours.
 En règle générale, le cout pour chaque instance (de A jusqu'à F) tourne autour de 200.000.
 
 Le souci étant le cout bien trop grand. On est parti donc sur une première solution, qui consiste 
@@ -27,13 +27,13 @@ On a donc développé ces algos avec toutes les variantes et comparé.
 On a des résultats pour premier voisin en swap et two-opt, mais aussi pour le meilleur voisin en 
 swap et two-opt, pour deux manières initialiser une liste de ville : soit random, soit heuristic.
 
-On a comparé tous ces algos entre eux en cout mais également en temps de calcul, sur une 
+On a comparé tous ces algos entre eux en cout mais également en temps de calcul (en ms), sur une 
 moyenne de 100 executions par instance.
 
-On a conclu que le two-opt était plus local que le swap, et on obtient de meilleurs couts 
-pour une liste initialiser de manière heuristic. Enfin, en prenant le premier voisin améliorant, 
-on obtient des couts plus élevés qu'avec le meilleur voisin améliorant, mais de meilleurs résultats 
-en temps de calcul.
+On a conclu que le two-opt était plus local que le swap, et on obtient de meilleurs couts et de 
+de meilleurs temps pour une liste initialiser de manière heuristic. 
+Enfin, en prenant le premier voisin améliorant, on obtient des couts plus élevés qu'avec 
+le meilleur voisin améliorant, mais de meilleurs résultats en temps de calcul.
 
 ![TP2 - Instance A](/img/A.png)
 
