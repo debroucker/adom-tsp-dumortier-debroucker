@@ -1,25 +1,67 @@
 # adom-tsp-dumortier-debroucker
 
-## TSP
-En informatique, le problème du voyageur de commerce, ou problème du commis voyageur, 
-est un problème d'optimisation qui consiste à déterminer, étant donné une liste de villes 
-et les distances entre toutes les paires de villes, le plus court circuit qui passe 
-par chaque ville une et une seule fois.
-(Merci qui? et non, merci wiki)
+Projet réalisé en `Java 17`, pour travailler sur le `TSP`.
 
-## Analyse
+Par _Raphaël Dumortier_ et _Tommy Debroucker_.
 
-Au départ, on est parti sur une solution random, c'est-à-dire, on prend la liste des villes, 
-on la mélange, et on regarde le cout pour chaque parcours.
-En règle générale, le cout pour chaque instance (de A jusqu'à F) tourne autour de 200.000.
+## Contexte
+Dans le cadre de ce cours, nous avons vu le TSP. "Qu'est-ce que le TSP ?", me direz-vous. 
+Et bien, le TSP, en informatique, c'est le problème du voyageur de commerce, ou problème du 
+commis voyageur. C'est un problème d'optimisation qui consiste à déterminer, étant donné une 
+liste de villes et les distances entre toutes les paires de villes, le plus court circuit 
+qui passe par chaque ville une et une seule fois.
+(Merci qui? Et non, merci wiki).
+TSP voulant dire Traveling-Salesman Problem.
 
-Le souci étant le cout bien trop grand. On est parti donc sur une première solution, qui consiste 
-à prendre une ville, calculer chaque cout entre cette dernière et toutes les autres villes, et on
-prend le plus petit cout, et ainsi de suite. Ici, on arrive à de bien meilleurs résultats, qui 
-tournent autour de 20.000.
+![TSP](/img/tsp.png)
 
+Vous l'aurez compris, le but est de trouver le chemin le plus optimal pour visiter chaque ville.
+Dis comme ça, ça peut paraître assez simple. Cependant, le nombre de solutions est énorme !
+En effet, nous avons `(n-1)!/2` solutions possibles, pour n villes. Donc lister l'ensemble des 
+solutions, pour obtenir le meilleur, serait beaucoup trop long et fastidieux.
+Dans les TPs que nous avons étudiés, nous avons 100 villes, et donc 99!/2, ce qui donne environ `4.6663107722e+155`.
+(nous ne sommes pas responsables des maux de têtes occasionnés par la lecture de ce nombre)
 
+En plus de cela, il est possible multiplier les critères. En effet, dans un premier temps, nous pouvons prendre 
+en considération qu'un seul critère, comme le coût du trajet. Mais nous pouvons également en prendre plusieurs, 
+comme le temps de trajet.
+
+## Modélisation
+Pour la résolution de ce problème, nous avons à notre disposition 6 fichiers, représentants chacun une instance
+aléatoire contenant 100 villes. Ces instances contenaient les valeurs des coûts entre chaque pair de villes. 
+Nous avons donc créé un parseur de ces fichiers, afin d'obtenir une matrice de coût par instance, mais également 
+une méthode d'évaluation (c'est-à-dire les distances entre chaque ville) pour une liste de ville et une matrice 
+données.
+
+L'objectif étant d'avoir les coûts les plus bas, nous avons à notre disposition les meilleurs coûts connus pour 
+les instances données : (spoiler : nous n'avons pas réussis à trouver les mêmes coûts)
+ - Instance A : 10659
+ - Instance B : 9234
+ - Instance C : 9529
+ - Instance D : 9108
+ - Instance E : 8899
+ - Instance F : 8989
+ 
+## 1ère approche : Random (pas une bonne idée)
+La 1ère méthode que nous avons, et la plus simple à faire, était de générer une liste de villes, dans un ordre 
+aléatoire et d'en évaluer le coût, pour chacune de nos instances et donc de matrices. En règle générale, 
+le coût tourne autour de `200 000`. Ce qui est très loin des meilleures solutions connues, mais attendue. En effet, 
+avec un nombre de solutions aussi grand que `4.6663107722e+155`, il est impossible de trouver LA meilleure solution 
+de manière aléatoire.
+
+## 2ème approche : Heuristique
+Une fois avoir obtenue de pietre resultats avec la 1ère approche, nous sommes parties sur l'heuristique constructive. 
+Encore une fois, "Qu'est-ce que l'heuristique constructive ?", me demanderez-vous. Et bien, cette méthode consiste 
+à calculer le coût entre la ville actuelle et toutes les autres, afin d'avoir la ville la plus proche, et on fait cette 
+recherche pour chaque ville. Lors de nos recherches pour cette méthode, nous avons vu que la ville de départ était 
+un choix important. En effet, en fonction de la ville de départ, nous n'avons pas les mêmes coûts. 
+Ici, le coût tourne autour de `20 000`, donc 10 fois moins ! Nous nous rapprochons petit à petit des meilleures 
+solutions connues, allons-nous y arriver ?
+
+Image montrant les résultats de la 1ère et 2ème approche
 ![TP1](/img/cost_random_heuristic.png)
+
+
 
 Suite à cela, nous avons vu l'approche des voisins améliorants, notamment le swap et le two-opt.
 Mais également deux méthodes de mouvement, meilleur voisin améliorant, ou premier voisin améliorant.
