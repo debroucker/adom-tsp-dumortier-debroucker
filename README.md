@@ -134,6 +134,7 @@ le swap, contre `18 134` pour le two-opt. Pour le temps, on a respectivement `3,
 #
 
 Enfin, pour la `stratégie de mouvement` :
+
 Concernant cette stratégie, nous avons des résultats mitigés. Le premier voisin améliorant met moins de temps de calcul, 
 tandis que le meilleur voisin améliorant nous permet d'avoir de meilleurs coûts. Ces résultats étaient tout de même attendus. 
 En effet, il est normal que le premier voisin améliorant mette moins de temps de calcul, car dès qu'il trouve un 
@@ -181,3 +182,5 @@ Pour plus de détails, voici les résultats de chaque instance, que nous avons f
 ![TP2 - Instance E](/img/E.png)
 
 ![TP2 - Instance F](/img/F.png)
+
+#
