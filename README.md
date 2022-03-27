@@ -55,8 +55,11 @@ Encore une fois, "Qu'est-ce que l'heuristique constructive ?", me demanderez-vou
 à calculer le coût entre la ville actuelle et toutes les autres, afin d'avoir la ville la plus proche, et on fait cette 
 recherche pour chaque ville. Lors de nos recherches pour cette méthode, nous avons vu que la ville de départ était 
 un choix important. En effet, en fonction de la ville de départ, nous n'avons pas les mêmes coûts. 
+
 Ici, le coût tourne autour de `20 000`, donc 10 fois moins ! Nous nous rapprochons petit à petit des meilleures 
 solutions connues, allons-nous y arriver ?
+
+#
 
 Image montrant les résultats de la 1ère et 2ème approche
 ![TP1](/img/cost_random_heuristic.png)
