@@ -20,7 +20,7 @@ Dis comme ça, ça peut paraître assez simple. Cependant, le nombre de solution
 En effet, nous avons `(n-1)!/2` solutions possibles, pour n villes. Donc lister l'ensemble des 
 solutions, pour obtenir le meilleur, serait beaucoup trop long et fastidieux.
 Dans les TPs que nous avons étudiés, nous avons 100 villes, et donc 99!/2, ce qui donne environ `4.6663107722e+155`.
-(nous ne sommes pas responsables des maux de tête occasionnés par la lecture de ce nombre)
+(nous ne sommes pas responsables des maux de tête occasionnés par la lecture de ce nombre).
 
 En plus de cela, il est possible multiplier les critères. En effet, dans un premier temps, nous pouvons prendre 
 en considération qu'un seul critère, comme le coût du trajet. Mais nous pouvons également en prendre plusieurs, 
@@ -64,6 +64,8 @@ solutions connues, allons-nous y arriver ? (To be continued...)
 Image montrant les résultats de la 1ère et 2ème approche :
 
 ![TP1](/img/cost_random_heuristic.png)
+
+#
 
 ## 3ème approche : Algorithme de recherche locale (Two-Opt, mon meilleur ami)
 Une fois n'est pas coutume, "Qu'est ce qu'un algorithme de recherche locale ?", m'interrogerez-vous. Et bien, un 
@@ -117,8 +119,10 @@ pour la solution random. Et pour le temps, on a respectivement `0,290`ms contre 
  - Pour l'instance C, en Meilleur voisin améliorant - Two-Opt, on a `14 181` en coût pour l'Heuristique, contre `18 733` 
 pour la solution random. Et pour le temps, on a respectivement `0,460`ms contre `3,100`ms.
 
+#
 
 Pour ce qui est du `type de voisinage` :
+
 Ici, nous voyons que le Two-Opt est meilleur en coût, mais également en temps, par rapport au Swap.
 
 _Quelques données :_
@@ -127,6 +131,7 @@ _Quelques données :_
 - Pour l'instance D, en Random - Meilleur voisin améliorant, on a `40 424` en coût pour 
 le swap, contre `18 134` pour le two-opt. Pour le temps, on a respectivement `3,790`ms contre `2,820`ms.
 
+#
 
 Enfin, pour la `stratégie de mouvement` :
 Concernant cette stratégie, nous avons des résultats mitigés. Le premier voisin améliorant met moins de temps de calcul, 
@@ -142,7 +147,10 @@ voisin. Pour le temps, on obtient respectivement `0,220`ms contre `0,320`ms.
 - Pour l'instance F, en Random - Two-Opt, on a `18 539` pour le premier voisin, contre `18 054` pour le meilleur 
 voisin. Et pour le temps, on a respectivement `0,480`ms contre `2,770`ms.
 
+#
+
 _Conclusion :_
+
 Nous avons de bien meilleur résultat si l'on initialise avec une solution Heuristique constructive qu'avec une Random. 
 Nous avons également vu que le Two-Opt est plus optimal que le Swap.
 Cependant, pour ce qui est du choix Premier/Meilleur voisin améliorant, nous dirons que cela 
