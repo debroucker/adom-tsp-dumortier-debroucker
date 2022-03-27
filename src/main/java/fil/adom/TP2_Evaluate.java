@@ -23,6 +23,8 @@ public class TP2_Evaluate {
             var allCosts = new ArrayList<Integer>();
             var allTimes = new ArrayList<Long>();
             //heuristic first swap
+            allCosts = new ArrayList<>();
+            allTimes = new ArrayList<>();
             for (var j = 0; j < nb; j++) {
                 var currentMs = System.currentTimeMillis();
                 var randomCities = TP1.generateRandomCities(dim);
@@ -35,6 +37,8 @@ public class TP2_Evaluate {
             var avgTime = allTimes.stream().mapToDouble(a -> a).average().getAsDouble();
             res += "Instance " + instance + " - Heuristic - First - Swap    -> cost: " + numberFormat.format(avgCost) + " | time: " + numberFormat.format(avgTime) + "\n";
             //heuristic first two-opt
+            allCosts = new ArrayList<>();
+            allTimes = new ArrayList<>();
             for (var j = 0; j < nb; j++) {
                 var currentMs = System.currentTimeMillis();
                 var randomCities = TP1.generateRandomCities(dim);
@@ -47,6 +51,8 @@ public class TP2_Evaluate {
             avgTime = allTimes.stream().mapToDouble(a -> a).average().getAsDouble();
             res += "Instance " + instance + " - Heuristic - First - Two-Opt -> cost: " + numberFormat.format(avgCost) + " | time: " + numberFormat.format(avgTime) + "\n";
             //heuristic best swap
+            allCosts = new ArrayList<>();
+            allTimes = new ArrayList<>();
             for (var j = 0; j < nb; j++) {
                 var currentMs = System.currentTimeMillis();
                 var randomCities = TP1.generateRandomCities(dim);
@@ -59,6 +65,8 @@ public class TP2_Evaluate {
             avgTime = allTimes.stream().mapToDouble(a -> a).average().getAsDouble();
             res += "Instance " + instance + " - Heuristic - Best  - Swap    -> cost: " + numberFormat.format(avgCost) + " | time: " + numberFormat.format(avgTime) + "\n";
             //heuristic best two-opt
+            allCosts = new ArrayList<>();
+            allTimes = new ArrayList<>();
             for (var j = 0; j < nb; j++) {
                 var currentMs = System.currentTimeMillis();
                 var randomCities = TP1.generateRandomCities(dim);
@@ -72,6 +80,8 @@ public class TP2_Evaluate {
             res += "Instance " + instance + " - Heuristic - Best  - Two-Opt -> cost: " + numberFormat.format(avgCost) + " | time: " + numberFormat.format(avgTime) + "\n";
 
             //random first swap
+            allCosts = new ArrayList<>();
+            allTimes = new ArrayList<>();
             for (var j = 0; j < nb; j++) {
                 var currentMs = System.currentTimeMillis();
                 var randomCities = TP1.generateRandomCities(dim);
@@ -83,6 +93,8 @@ public class TP2_Evaluate {
             avgTime = allTimes.stream().mapToDouble(a -> a).average().getAsDouble();
             res += "Instance " + instance + " - Random    - First - Swap    -> cost: " + numberFormat.format(avgCost) + " | time: " + numberFormat.format(avgTime) + "\n";
             //random first two-opt
+            allCosts = new ArrayList<>();
+            allTimes = new ArrayList<>();
             for (var j = 0; j < nb; j++) {
                 var currentMs = System.currentTimeMillis();
                 var randomCities = TP1.generateRandomCities(dim);
@@ -94,6 +106,8 @@ public class TP2_Evaluate {
             avgTime = allTimes.stream().mapToDouble(a -> a).average().getAsDouble();
             res += "Instance " + instance + " - Random    - First - Two-Opt -> cost: " + numberFormat.format(avgCost) + " | time: " + numberFormat.format(avgTime) + "\n";
             //random best swap
+            allCosts = new ArrayList<>();
+            allTimes = new ArrayList<>();
             for (var j = 0; j < nb; j++) {
                 var currentMs = System.currentTimeMillis();
                 var randomCities = TP1.generateRandomCities(dim);
@@ -105,6 +119,8 @@ public class TP2_Evaluate {
             avgTime = allTimes.stream().mapToDouble(a -> a).average().getAsDouble();
             res += "Instance " + instance + " - Random    - Best  - Swap    -> cost: " + numberFormat.format(avgCost) + " | time: " + numberFormat.format(avgTime) + "\n";
             //random best two-opt
+            allCosts = new ArrayList<>();
+            allTimes = new ArrayList<>();
             for (var j = 0; j < nb; j++) {
                 var currentMs = System.currentTimeMillis();
                 var randomCities = TP1.generateRandomCities(dim);
