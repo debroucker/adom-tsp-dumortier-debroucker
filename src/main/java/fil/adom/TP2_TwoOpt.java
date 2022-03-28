@@ -53,9 +53,9 @@ public class TP2_TwoOpt {
         var optWay = new Integer[cities.length]; 
         var best = 0;
         var changes = 0;
-        for (var i = 0; i < cities.length - 2; i++) { //2 par 2 à cause du two-opt
-            for (var j = i + 3; j < cities.length; j++) { //on cherche si on peut two-opt pour chaque ville
-                var gain = gainTwoOpt(i, j, cities, matrix);
+        for (var i = 0; i < cities.length - 2; i++) {
+            for (var j = i + 3; j < cities.length; j++) { //+3 pour le two-opt -> A,B,C et D
+                var gain = gainTwoOpt(i, j, cities, matrix);  //on cherche si on peut two-opt pour chaque ville
                 if (gain > best) {
                     optWay = twoOpt(cities, i, j);
                     changes++;
