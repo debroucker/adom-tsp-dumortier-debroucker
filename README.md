@@ -183,4 +183,192 @@ Pour plus de détails, voici les résultats de chaque instance, que nous avons f
 
 ![TP2 - Instance F](/img/F.png)
 
+## Le TSP multicritère
+
+Dans la suite de notre recherche à la résolution du problème du TSP, on va rechercher à approfondir avec une dimension supplémentaire en étudiant de résoudre le TSP mais avec un critère supplémentaire, prenons pour exemple que le premier critère fût le temps pour parcourir la distance entre les "villes"(points), maintenant on va chercher à ajouter un critère tel que le coût.
+Ainsi pour concrétiser ceci, nous aurons 2 matrices A et B qui représentront l'un et l'autre des critères.
+
+Pour notre TP avec le calcul de multi-objectifs nous avons créé une fonction "evaluateTwoObjectives" qui prend en paramètre deux matrices A et B et un tableau d'entier représentant les "villes".
+
+En générant de multiples solutions aléatoires, nos résultats avec les fonctions et les algorithmes nous renvoient des résultats compris entre 198003 et 240801 (exemple de matrice AB).
+Les deux criètes tournent en moyenne autour des 200000 pour les différentes instances.
+
+Instance: AB; Cost for Random Cities: 198003 226700
+Instance: CD; Cost for Random Cities: 210045 239092
+Instance: EF; Cost for Random Cities: 240801 231889
+
+Pour la suite de cette partie sur le TSP multi-critères nous nous intéresseront aux filtres qui entrent en jeu.
+Nous avons deux types de filtres : le filtre online et offline.
+
+Le filtre online se constitue d'un front pareto : c'est un ensemble de solutions qui sont des paires, et où aucune solution n'a de meilleures solutions pour les deux critères, signifiant qu'elles ne sont pas dominées.
+Durant tout le parcours on ne va retenir que ces solutions afin de pouvoir par la suite pouvoir les comparer.
+
+Ensuite pour le filtre Offline, celui-ci va prendre considérablement plus de solutions afin de pouvoir déterminer si elles possèdent leur place dans la liste de solutions non dominées. 
+
+En soi, les deux filtres retournent le même résultat et le filtre Online se sert de la même fonctionnalité de vérification d'appartenance des solutions à l'ensemble de solutions non dominées.
+
+### Les données issues pour ce mTSP
+
 #
+#### Filtre Online : 
+
+Les données retournées pour AB : 
+
+251176	235291
+242036	251049
+223516	264816
+221652	273843
+244291	249719
+240057	252642
+259702	231084
+233554	255133
+262953	229674
+249260	237575
+240292	252311
+258720	233099
+247463	240720
+
+
+Les données retournées pour CD : 
+
+235583	259517
+251590	253301
+236479	253873
+242334	253796
+261383	219512
+260034	244932
+220776	265528
+223727	264215
+253128	250947
+
+
+Les données retournées pour EF : 
+
+230084	265523
+275895	218871
+250871	249710
+258369	237663
+252594	243954
+239670	250823
+
+#
+#### Filtre Offline : 
+
+Les données retournées pour AB : 
+
+238050	258020
+242250	248550
+278234	201512
+247720	247461
+259986	239096
+234227	263191
+250716	241207
+
+
+Les données retournées pour CD : 
+
+212506	262534
+262098	259396
+218572	259424
+268270	209690
+
+
+Les données retournées pour EF : 
+
+259433	231332
+253528	263741
+266517	221337
+262944	223021
+258060	240846
+260976	227847
+
+Nous n'avons pas traité la question bonus pour effectuer un TSP avec plus de 2 objectifs.
+
+## Approche Scalaire
+
+Concernant l'approche scalaire nous avons rencontré beaucoup de difficultés, notamment lié à la compréhension et à la réalisation de l'algorithme, nous savons que le nôtre n'est pas complètement fini et que des erreurs peuvent être constatées.
+
+D'après ce que nous avons fait précédemment, nous allons dans cette partie aborder l'approche Scalaire et l'implémenter dans notre résolution du mTSP.
+
+Le but de cet algorithme est d'obtenir au plus près possible le meilleur front pareto.
+
+Plusieurs choses sont à noter dans l'algorithme développé.
+En effet, on va initialiser dans un premier temps nos matrices A et B, puis une liste avec des nombres allant de 0 à 1 avec un pas de 0,05.
+Cette liste va représenter des poids qui seront appliqués sur les critères que l'on va passer avec l'algorithme.
+L'algorithme va donc cycler pour effectuer toutes les combinaisons de poids sur tous les critères et parmi une séquence d'entier générée automatiquement, on va observer les relations adjacentes entre les villes pour en déduire une note qui retiendra le voisin avec la meilleure note et toujours dans une optique d'optimisation, nous cherchons jusqu'à ce que nous ne trouvons plus de meilleur voisin.
+
+#
+
+Voila ce que donne le front scalaire pour AB : 
+
+[231517, 17903]
+[173598, 17414]
+[142699, 21170]
+[112289, 24801]
+[85643, 28487]
+[80980, 30320]
+[72312, 33239]
+[61482, 43064]
+[55657, 41557]
+[58285, 43018]
+[54409, 49524]
+[49309, 52282]
+[42423, 64293]
+[40334, 66096]
+[33448, 82280]
+[30059, 88389]
+[29675, 96999]
+[25039, 107821]
+[23495, 141070]
+[21436, 187720]
+[21284, 228966]
+
+Pour CD : 
+
+[202092, 17656]
+[176749, 19794]
+[135046, 23714]
+[118542, 23579]
+[109242, 25463]
+[83051, 36031]
+[72125, 34005]
+[73717, 38637]
+[58569, 41603]
+[59164, 42559]
+[53883, 51016]
+[46759, 59733]
+[39760, 72804]
+[34087, 77899]
+[35864, 77851]
+[31982, 93130]
+[27861, 99234]
+[23700, 114114]
+[21341, 147643]
+[20105, 177655]
+[17174, 244701]
+
+Pour EF : 
+
+[236467, 17497]
+[177793, 19297]
+[138638, 21175]
+[131596, 26018]
+[98153, 31480]
+[84120, 31501]
+[78935, 33697]
+[77042, 38452]
+[59853, 49937]
+[49438, 50845]
+[51284, 50710]
+[43720, 57176]
+[43071, 63012]
+[42890, 66480]
+[31791, 76615]
+[32096, 88353]
+[28292, 92933]
+[25462, 120572]
+[20001, 145420]
+[17228, 177383]
+[17178, 243555]
+
+Avec l'aide d'un outil tel que Excel on pourrait mettre en relief les données pour apercevoir la représentation graphique des points de chaque matrice afin de visualiser les solutions qui représentent plus ou moins en les reliant des courbes.
