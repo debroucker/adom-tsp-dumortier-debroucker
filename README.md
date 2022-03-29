@@ -185,25 +185,25 @@ Pour plus de détails, voici les résultats de chaque instance, que nous avons f
 
 ## Le TSP multicritère
 
-Dans la suite de notre recherche à la résolution du problème du TSP, on va rechercher à approfondir avec une dimension supplémentaire en essayant de résoudre le TSP mais avec un critère supplémentaire, prenons pour exemple que le premier critère fût le temps pour parcourir la distance entre les "villes"(points), maintenant on va chercher à ajouter un critère tel que le coût.
+Dans la suite de notre recherche à la résolution du problème du TSP, on va rechercher à approfondir avec une dimension supplémentaire en essayant de résoudre le TSP mais avec un critère supplémentaire. Prenons pour exemple que le premier critère fût le temps pour parcourir la distance entre les "villes"(points), maintenant on va chercher à ajouter un critère tel que le coût.
 Ainsi pour concrétiser ceci, nous aurons 2 matrices A et B qui représentront l'un et l'autre des critères.
 
 Pour notre TP avec le calcul de multi-objectifs nous avons créé une fonction "evaluateTwoObjectives" qui prend en paramètre deux matrices A et B et un tableau d'entier représentant les "villes".
 
-En générant de multiples solutions aléatoires, nos résultats avec les fonctions et les algorithmes nous renvoient des résultats compris entre 198003 et 240801 (exemple de matrice AB).
-Les deux criètes tournent en moyenne autour des 200000 pour les différentes matrices qu'on possède.
+En générant de multiples solutions aléatoires, nos résultats avec les fonctions et les algorithmes nous renvoient des résultats compris entre `198003` et `240801` (exemple de matrice AB).
+Les deux criètes tournent en moyenne autour des `200000` pour les différentes matrices qu'on possède.
 
-Instance: AB; Cost for Random Cities: 198003 226700
-Instance: CD; Cost for Random Cities: 210045 239092
-Instance: EF; Cost for Random Cities: 240801 231889
+Instance: AB; Cost for Random Cities: `198003` `226700`
+Instance: CD; Cost for Random Cities: `210045` `239092`
+Instance: EF; Cost for Random Cities: `240801` `231889`
 
-Pour la suite de cette partie sur le TSP multi-critères nous nous intéresseront aux filtres qui entrent en jeu.
-Nous avons deux types de filtres : le filtre online et offline.
+Pour la suite de cette partie sur le TSP multi-critères, nous nous intéresseront aux filtres qui entrent en jeu.
+Nous avons deux types de filtres : le filtre `Online` et `Offline`.
 
-Le filtre online se constitue d'un front pareto : c'est un ensemble de solutions qui sont des paires, et où aucune solution n'a de meilleures solutions pour les deux critères, signifiant qu'elles ne sont pas dominées.
+Le `filtre Online` se constitue d'un `front pareto` : c'est un ensemble de solutions qui sont des paires, et où aucune solution n'a de meilleures solutions pour les deux critères, signifiant qu'elles ne sont pas dominées. (Ex: 10-20, et 5-25).
 Durant tout le parcours on ne va retenir que ces solutions afin de pouvoir par la suite pouvoir les comparer.
 
-Ensuite pour le filtre Offline, celui-ci va prendre considérablement plus de solutions afin de pouvoir déterminer si elles possèdent leur place dans la liste de solutions non dominées. 
+Ensuite pour le `filtre Offline`, celui-ci va prendre considérablement plus de solutions afin de pouvoir déterminer si elles possèdent leur place dans la liste de solutions non dominées. 
 
 En soi, les deux filtres retournent le même résultat et le filtre Online se sert de la même fonctionnalité de vérification d'appartenance des solutions à l'ensemble de solutions non dominées que le filtre Offline.
 
@@ -223,7 +223,7 @@ Nous n'avons pas traité la question bonus pour effectuer un TSP avec plus de 2 
 
 ## Approche Scalaire
 
-Concernant l'approche scalaire nous avons rencontré beaucoup de difficultés, notamment lié à la compréhension et à la réalisation de l'algorithme, nous savons que le nôtre n'est pas complètement fini et que des erreurs peuvent être constatées.
+Concernant l'approche scalaire nous avons rencontré beaucoup de difficultés, notamment lié à la compréhension et à la réalisation de l'algorithme. Nous savons que le nôtre n'est pas complètement finie et que des erreurs peuvent être constatées.
 
 D'après ce que nous avons fait précédemment, nous allons dans cette partie aborder l'approche Scalaire et l'implémenter dans notre résolution du mTSP.
 
@@ -246,9 +246,12 @@ Avec l'aide d'un outil tel que Excel on pourrait mettre en relief les données p
 
 En ce qui concerne le front pareto et les expérimentations nous n'avons pas pu les effectuer par manque de temps.
 
-----
+
+# Présentation
+
 Bonjour Monsieur,
 
-En ce qui concerne notre présentation, nous vous aurions présenté nos différents algorithmes développés avec le support du ReadMe afin de ne pas faire qu'une présentation de code.
+En ce qui concerne notre présentation, nous vous aurions présenté nos différents algorithmes développés avec le support du ReadMe afin de ne pas faire qu'une présentation de code. En particulier le TP1, TP2, TP4, TP5, ainsi que nos résultats et analyse pour 
+en ce qui concerne les temps d'exécutions et le cout de chaque solution. 
 Nous vous aurions montré étapes par étapes les différents algorithmes important et les résultats que nous avons obtenus, tous stockés dans des fichiers présents dans le répertoire image.
 Nos conclusions sont aussi présentes dans ce readme.
