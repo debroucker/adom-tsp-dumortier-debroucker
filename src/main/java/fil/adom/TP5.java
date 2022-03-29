@@ -1,12 +1,18 @@
 package fil.adom;
 
+import java.io.BufferedWriter;
 import java.io.Console;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 
 public class TP5 {
+
+    public static String mainDir = "./files/generated/FrontScalaire/";
     
     /*
         Instructions du TP 5 :
@@ -27,6 +33,7 @@ public class TP5 {
         for (Sequence sequence2 : front_scalaire) {
             System.out.println(sequence2.getRates());
         }
+        writeInfo(front_scalaire, "AB");
         System.out.println("CD : \n");
         var matriceC = TP1.createMatrixFromFile("C");
         var matriceD = TP1.createMatrixFromFile("D");
@@ -35,6 +42,7 @@ public class TP5 {
         for (Sequence sequence2 : front_scalaire2) {
             System.out.println(sequence2.getRates());
         }
+        writeInfo(front_scalaire2, "CD");
         System.out.println("EF : \n");
         var matriceE = TP1.createMatrixFromFile("E");
         var matriceF = TP1.createMatrixFromFile("F");
@@ -43,6 +51,7 @@ public class TP5 {
         for (Sequence sequence2 : front_scalaire3) {
             System.out.println(sequence2.getRates());
         }
+        writeInfo(front_scalaire3, "EF");
 
     }
     /*
@@ -83,37 +92,6 @@ public class TP5 {
         return eval;
     }
 
-    //Boucle afin de stocker les bons FrontPareto
-    public static ArrayList<Sequence> calculOfPareto(ArrayList<Sequence> seq){
-        ArrayList<Sequence> frontPareto = new ArrayList<>();
-        frontPareto.add(seq.get(0)); //On prends la première liste de séquence.
-        for(Sequence s : seq){
-            calculFrontPareto(s,frontPareto);
-        }
-        return frontPareto;
-    }
-
-    // Calcul du front pareto d'une solution on va vérifier si il est possible de 
-    public static void calculFrontPareto(Sequence s, ArrayList<Sequence> frontP){
-        ArrayList<Sequence> aEnlever = new ArrayList<>();
-        ArrayList<Integer> seq = s.getRates();
-        boolean ajouter = true;
-        for( Sequence frontPareto : frontP){
-            ArrayList<Integer> front = frontPareto.getRates();
-            if(seq.get(0) >= front.get(0) && seq.get(1) >= front.get(1)){
-                ajouter=false;
-                break;
-            } else if (seq.get(0) <= front.get(0) && seq.get(1) <= front.get(1)){
-                aEnlever.add(frontPareto);
-            }
-        }
-        //On enleve des Sequences 
-        for(Sequence deleted : aEnlever){
-            frontP.remove(deleted);
-        }
-        if(ajouter) frontP.add(s);
-    }
-
     public static List<Sequence> frontScalaire (Integer[] firstSeq, ArrayList<Double> poids,int[][] matriceA,int[][] matriceB){
         // Initialise une liste pour récupérer le front scalaire des fronts
         ArrayList<Sequence> front_Seqs = new ArrayList<>();
@@ -131,10 +109,10 @@ public class TP5 {
                 actualisation=false;
                 for ( int i = 0; i < firstSeq.length;i++){
                     for ( int j = i+1; j < firstSeq.length;j++ ){
-                        Integer[] sequenceEvalue = TP2_TwoOpt.twoOpt(sequence_actuelle.getSeqs(), i, j);
-                        Sequence sequence_unitaire = evaluate_front(matriceA, matriceB, sequenceEvalue);
-                        double scoreEvalue = (sequence_unitaire.getRates().get(0) * unPoids) + (sequence_unitaire.getRates().get(1) * (1.0 - unPoids));
-                        if( le_score > scoreEvalue ){
+                        Integer[] sequenceEvalue = TP2_TwoOpt.twoOpt(sequence_actuelle.getSeqs(), i, j); // On va effectuer un two-opt
+                        Sequence sequence_unitaire = evaluate_front(matriceA, matriceB, sequenceEvalue); //on evalue le score du meilleur voisin
+                        double scoreEvalue = (sequence_unitaire.getRates().get(0) * unPoids) + (sequence_unitaire.getRates().get(1) * (1.0 - unPoids)); // on y effectue une somme pondérée sur les critères 
+                        if( le_score > scoreEvalue ){ //On continue si on trouve un meilleur voisin / sinon on passe
                             actualisation = true;
                             le_score = scoreEvalue;
                             meilleures_sequence = sequence_unitaire;
@@ -149,6 +127,22 @@ public class TP5 {
         //peuvent possiblement être dominées
         return front_Seqs;
     }
+
+    public static void writeInfo(List<Sequence> sequence, String instance) {
+        try {
+            var f = new File(mainDir + instance + ".tsp");
+            var writer = new BufferedWriter(new FileWriter(f));
+            for (var sequenced:  sequence) {
+                writer.write(sequenced.getRates().toString());
+            }
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+
 }
 
 final class Sequence {
