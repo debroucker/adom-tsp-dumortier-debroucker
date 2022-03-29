@@ -245,3 +245,10 @@ L'algorithme va donc cycler pour effectuer toutes les combinaisons de poids sur 
 Avec l'aide d'un outil tel que Excel on pourrait mettre en relief les données pour apercevoir la représentation graphique des points de chaque matrice afin de visualiser les solutions qui représentent plus ou moins en les reliant des courbes.
 
 En ce qui concerne le front pareto et les expérimentations nous n'avons pas pu les effectuer par manque de temps.
+
+----
+Bonjour Monsieur,
+
+En ce qui concerne notre présentation, nous vous aurions présenté nos différents algorithmes développés avec le support du ReadMe afin de ne pas faire qu'une présentation de code.
+Nous vous aurions montré étapes par étapes les différents algorithmes important et les résultats que nous avons obtenus, tous stockés dans des fichiers présents dans le répertoire image.
+Nos conclusions sont aussi présentes dans ce readme.
