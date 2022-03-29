@@ -217,7 +217,7 @@ En soi, les deux filtres retournent le même résultat et le filtre Online se se
 #
 #### Filtre Offline : 
 
-![Résultats Offline](/img/OffLine.png)
+![Résultats Offline](/img/Offline.png)
 
 Nous n'avons pas traité la question bonus pour effectuer un TSP avec plus de 2 objectifs.
 
