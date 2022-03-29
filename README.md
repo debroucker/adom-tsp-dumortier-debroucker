@@ -251,7 +251,6 @@ En ce qui concerne le front pareto et les expérimentations nous n'avons pas pu 
 
 Bonjour Monsieur,
 
-En ce qui concerne notre présentation, nous vous aurions présenté nos différents algorithmes développés avec le support du ReadMe afin de ne pas faire qu'une présentation de code. En particulier le TP1, TP2, TP4, TP5, ainsi que nos résultats et analyse pour 
-en ce qui concerne les temps d'exécutions et le cout de chaque solution. 
+En ce qui concerne notre présentation, nous vous aurions présenté nos différents algorithmes développés avec le support du ReadMe afin de ne pas faire qu'une présentation de code. En particulier le TP1, TP2, TP4, TP5, ainsi que nos résultats et analyses en ce qui concerne les temps d'exécutions et le cout de chaque solution. 
 Nous vous aurions montré étapes par étapes les différents algorithmes important et les résultats que nous avons obtenus, tous stockés dans des fichiers présents dans le répertoire image.
 Nos conclusions sont aussi présentes dans ce readme.
